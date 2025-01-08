@@ -23,7 +23,7 @@ const Login = () => {
         provider,
         options
       });
-
+      localStorage.setItem('provider_name', provider);
       if (error) {
         console.error(`${provider} login error:`, error.message);
         alert('Login failed. Please try again.');

@@ -105,7 +105,7 @@ const Home = () => {
   }
 
   const { user } = session;
-  const provider = user.app_metadata.provider;
+  const provider = localStorage.getItem('provider_name');
   const username = user.user_metadata?.user_name;
 
   return (
@@ -186,9 +186,9 @@ const Home = () => {
         <Toolbar />
         <Container maxWidth="lg">
                 <Box sx={{ mt: 4 }}>
-          {(provider === 'gitlab') ? (
+          {(provider == 'bitbucket') ? (
             <Bitbucket username={username} accessToken={session.access_token} provider={provider} />
-          ) : provider === 'bitbucket' ? (
+          ) : provider == 'gitlab' ? (
             <Gitlab username={username} accessToken={session.access_token} provider={provider} />
           ) : (
             <Repositories username={username} accessToken={session.access_token} provider={provider} />
